@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>Directives 01</title>
+</head>
+<body>
+
+<div my-dir></div>
+
+<script type="text/javascript" src="../angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module("myapp", []);
+	app.directive("myDir", function() {
+		return {
+			link: function(scope, element, attr) {
+				console.log("scope: ", scope);
+				console.log("element: ", element);
+				console.log("attr: ", attr);
+			},
+			template: "Hello World"
+		}
+	});
+</script>
+</body>
+</html>
