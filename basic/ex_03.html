@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>#03</title>
+</head>
+<body ng-controller="BaseController">
+
+<div>
+	<input type="text" ng-model="name" placeholder="Enter your name">
+	<h1>Hello <span ng-bind="name"></span></h1>
+</div>
+
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript">
+	angular.module("myapp", [])
+		.controller("BaseController", [function() {
+			console.log("BaseController has been worked");
+		}]);
+</script>
+</body>
+</html>

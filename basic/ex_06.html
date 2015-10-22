@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>#6</title>
+</head>
+<body ng-controller="BaseController as controller">
+
+<div ng-repeat="user in controller.users">
+	<span>{{user.id}}</span>&nbsp;
+	<span ng-bind="user.name"></span>&nbsp;
+	<span>{{user.surname}}</span>	
+</div>
+
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript">
+	angular.module("myapp", [])
+		.controller("BaseController", [function() {
+			var self = this;
+			self.users = [
+				{id: 1, name: "Vasia", surname: "Pupkin"},
+				{id: 2, name: "Mykola", surname: "Popkin"},
+				{id: 3, name: "Neptun", surname: "Jupiter"}
+			];
+		}]);
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>#5</title>
+</head>
+<body ng-controller="BaseController as controller">
+
+<div>
+	<h1>Hello <span ng-bind="controller.userName"></span></h1>
+	<h1>From <span ng-bind="controller.companyName"></span></h1>
+	<button ng-click="controller.changeUserName()">Change User</button>
+</div>
+
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript">
+	angular.module("myapp", [])
+		.controller("BaseController", [function() {
+			var self = this;
+			self.userName = "Yurkovskiy";
+			self.companyName = "SoftServe";
+			self.changeUserName = function() {
+				self.userName = "Yuriy";
+			}
+		}]);
+</script>
+</body>
+</html>
