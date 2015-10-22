@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>Filters ex_03 Sorting data</title>
+	<meta charset="utf-8">
+	
+</head>
+<body ng-controller="FilterDemo">
+
+<!-- RAW Data -->
+<p>
+	<ul>
+		<li ng-repeat="emp in data">
+			<span>{{emp.name}}</span>&nbsp;&nbsp;
+			<span>{{emp.surname}}</span>&nbsp;&nbsp;
+			<span>{{emp.dep}}</span>&nbsp;&nbsp;
+			<span>{{emp.salary}}</span>
+		</li>
+	</ul>
+</p>
+<!-- /RAW Data -->
+
+<hr>
+
+<!-- Filtered Data -->
+<p>
+	<ul>
+		<li ng-repeat="emp in data | orderBy: '-name'">
+			<span>{{emp.name}}</span>&nbsp;&nbsp;
+			<span>{{emp.surname}}</span>&nbsp;&nbsp;
+			<span>{{emp.dep}}</span>&nbsp;&nbsp;
+			<span>{{emp.salary}}</span>
+		</li>
+	</ul>
+</p>
+<!-- /Filtered Data -->
+
+<script type="text/javascript" src="../angular.min.js"></script>
+
+	<script type="text/javascript">
+	var myApp = angular.module("myapp", []);
+
+	myApp.controller("FilterDemo", ["$scope", function($scope) {
+		var dataDump = [
+		{name: "Василь", surname: "Пупкін", dep: "Java", salary: 744.0},
+		{name: "Петро", surname: "Жаботинський", dep: "Java", salary: 532.0},
+		{name: "Микола", surname: "Джеря", dep: ".Net", salary: 322.0},
+		{name: "Тарас", surname: "Бульба", dep: "PHP", salary: 1292.0},
+		];
+		$scope.data = dataDump;
+	}]);
+	
+	</script>
+</body>
+</html>

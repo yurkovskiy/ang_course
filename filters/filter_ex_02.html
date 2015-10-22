@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>Filters ex_02 Custom Filter</title>
+	<meta charset="utf-8">
+	
+</head>
+<body ng-controller="FilterDemo">
+
+<!-- RAW Data -->
+<p>
+	<strong>{{data.someText}}</strong>
+</p>
+<!-- /RAW Data -->
+
+<hr>
+
+<!-- Filtered Data -->
+<p>
+	<strong>{{data.someText | changeSpacesToDotes}}</strong>
+</p>
+<!-- /Filtered Data -->
+
+<script type="text/javascript" src="../angular.min.js"></script>
+
+	<script type="text/javascript">
+	var myApp = angular.module("myapp", []);
+
+	myApp.filter("changeSpacesToDotes", function() {
+		return function(text) {
+			return text.split(" ").join(".");
+		};
+	});
+
+
+
+	myApp.controller("FilterDemo", ["$scope", function($scope) {
+		var dataDump = {
+			someText: "Lorem ipsum doloren..."
+		}
+		$scope.data = dataDump;
+	}]);
+	
+	</script>
+</body>
+</html>

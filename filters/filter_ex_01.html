@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>Filters ex_01</title>
+	
+</head>
+<body ng-controller="FilterDemo">
+
+<!-- RAW Data -->
+<p>
+	<strong>First Name</strong>: <span>{{data.firstName}}</span><br>
+	<strong>Last Name</strong>: <span>{{data.lastName}}</span><br>
+	<strong>Some Number</strong>: <span>{{data.someNumber}}</span><br>
+	<strong>Birth Date</strong>: <span>{{data.birthDate}}</span><br>
+	<ul>
+		<li ng-repeat="item in data.someStatistic">
+			{{item}}
+		</li>
+	</ul>
+</p>
+<!-- /RAW Data -->
+
+<hr>
+
+<!-- Filtered Data -->
+<p>
+	<strong>First Name</strong>: <span>{{data.firstName | uppercase}}</span><br>
+	<strong>Last Name</strong>: <span>{{data.lastName | lowercase}}</span><br>
+	<strong>Some Number</strong>: <span>{{data.someNumber | number:5}}</span><br>
+	<strong>Birth Date</strong>: <span>{{data.birthDate | date:"mediumDate"}}</span><br>
+	<ul>
+		<li ng-repeat="item in data.someStatistic | limitTo: 4">
+			{{item}}
+		</li>
+	</ul>
+</p>
+<!-- /Filtered Data -->
+
+<script type="text/javascript" src="../angular.min.js"></script>
+
+	<script type="text/javascript">
+	angular.module("myapp", [])
+		.controller("FilterDemo", ["$scope", function($scope) {
+			var dataDump = {
+				firstName: "Vasia",
+				lastName: "Pupkin",
+				someNumber: Math.PI,
+				birthDate: new Date(1990, 1, 10),
+				someStatistic: [13.97, 14.45, 12.21, 19.01, 99.87, 101.22, 102.33, 104.1]
+			};
+
+			$scope.data = dataDump;
+		}]);
+	
+	</script>
+</body>
+</html>
