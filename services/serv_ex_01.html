@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>serv ex 01</title>
+</head>
+<body>
+
+<div ng-controller="BaseController">
+	<span>Window width {{winWidth}} px</span>
+</div>
+
+<script type="text/javascript" src="../angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module("myapp", []);
+	app.controller("BaseController", function($scope, $window) {
+		$scope.winWidth = $window.innerWidth;
+	});
+</script>
+</body>
+</html>

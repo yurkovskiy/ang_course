@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>serv ex 03</title>
+</head>
+<body>
+
+<div ng-controller="BaseController">
+	<div>{{subjects}}</div>
+</div>
+
+<script type="text/javascript" src="../angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module("myapp", []);
+	app.factory("subjectService", function() {
+		var subjectSrv = {};
+		
+		subjectSrv.getSubjects = function() {
+			var emptyObj = {subject_id:1, subject_name: "High Math"};
+			return JSON.stringify(emptyObj);
+		}
+		return subjectSrv;
+	});
+
+	app.controller("BaseController", function($scope, subjectService) {
+		$scope.subjects = subjectService.getSubjects();
+	});
+</script>
+</body>
+</html>

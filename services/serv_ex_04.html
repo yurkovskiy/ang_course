@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>serv ex 04</title>
+</head>
+<body>
+
+<div ng-controller="BaseController">
+	<div>{{subjects}}</div>
+</div>
+
+<script type="text/javascript" src="../angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module("myapp", []);
+	app.factory("subjectService", function($http) {
+		var subjectSrv = {};
+
+		var BASE_URL = "http://ec2-54-69-82-91.us-west-2.compute.amazonaws.com/";
+		
+		subjectSrv.getSubjects = function(callbackFun) {
+			var URL = BASE_URL + "subject/getRecords";
+			$http.get(URL).then(
+				function success(resp){
+					callbackFun(resp.data);
+				},
+				function error(resp){
+					callbackFun(resp.data);
+				});
+			
+		}
+		return subjectSrv;
+	});
+
+	app.controller("BaseController", function($scope, subjectService) {
+		$scope.subjects = subjectService.getSubjects();
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>serv ex 02</title>
+</head>
+<body>
+
+<div ng-controller="BaseController">
+	<span>Current date {{date}}</span>
+</div>
+
+<script type="text/javascript" src="../angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module("myapp", []);
+	app.factory("dateService", function() {
+		var dateSrv = {};
+		dateSrv.getDate = function() {
+			return new Date().toString();
+		}
+		return dateSrv;
+	});
+
+	app.controller("BaseController", function($scope, dateService) {
+		$scope.date = dateService.getDate();
+	});
+</script>
+</body>
+</html>
