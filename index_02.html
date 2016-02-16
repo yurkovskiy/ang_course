@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Closures 02</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	var integer = (function() {
+		var counter = 0;
+		return function() {
+			return counter++;
+		};
+	}());
+
+	
+</script>
+
+</body>
+</html>

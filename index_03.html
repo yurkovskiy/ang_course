@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Closures 03</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	function counter() {
+		var n = 0;
+		return {
+			count: function() {
+				return n++;
+			},
+			reset: function() {
+				n = 0;
+			}
+		};
+	}
+
+	var c = counter(), d.counter();
+	c.count();
+
+	
+</script>
+
+</body>
+</html>
