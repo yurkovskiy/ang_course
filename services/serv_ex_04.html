@@ -1,39 +1,27 @@
 <!DOCTYPE html>
 <html ng-app="myapp">
 <head>
-	<title>serv ex 04</title>
+	<title>serv ex 04 [$http]</title>
 </head>
 <body>
 
-<div ng-controller="BaseController">
-	<div>{{subjects}}</div>
-</div>
+<div ng-controller="weatherCtrl as ctrl">{{ctrl.weather}}</div>
 
 <script type="text/javascript" src="../angular.min.js"></script>
+
 <script type="text/javascript">
 	var app = angular.module("myapp", []);
-	app.factory("subjectService", function($http) {
-		var subjectSrv = {};
+	app.constant("BASE_URL", "http://api.openweathermap.org/");
 
-		var BASE_URL = "http://ec2-54-69-82-91.us-west-2.compute.amazonaws.com/";
-		
-		subjectSrv.getSubjects = function(callbackFun) {
-			var URL = BASE_URL + "subject/getRecords";
-			$http.get(URL).then(
-				function success(resp){
-					callbackFun(resp.data);
-				},
-				function error(resp){
-					callbackFun(resp.data);
-				});
-			
-		}
-		return subjectSrv;
+	app.controller("weatherCtrl", function($http, BASE_URL) {
+		var self = this;
+		$http.get(BASE_URL + "data/2.5/weather?id=2172797&appid=44db6a862fba0b067b1930da0d769e98")
+		.then(function(response) {
+			self.weather = response.data;
+		})
 	});
 
-	app.controller("BaseController", function($scope, subjectService) {
-		$scope.subjects = subjectService.getSubjects();
-	});
 </script>
+
 </body>
 </html>
