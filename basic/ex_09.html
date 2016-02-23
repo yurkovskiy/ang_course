@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>#9</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	* {
+		font-family: Verdana;
+		font-size: 20px;
+	}
+	.a {
+		border: 1px solid #000;
+		background-color: yellow;
+		width: 200px;
+	}
+	</style>
+</head>
+<body ng-controller="BaseController as controller">
+
+<div>
+	<h1>Hello <span ng-bind="controller.userName"></span></h1>
+	<h1>From <span ng-bind="controller.companyName"></span></h1>
+	<h1>Some param <span ng-bind="controller.someparam"></span></h1>
+	<h1 class="a" ng-if="controller.someparam">Dependent block</h1>
+	<button ng-click="controller.changeSomeparam()">Change</button>
+</div>
+
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript">
+	angular.module("myapp", [])
+	.controller("BaseController", [function() {
+		var self = this;
+		self.someparam = false;
+		self.changeSomeparam = function() {
+			self.someparam = !self.someparam;
+		}
+	}]);
+
+</script>
+</body>
+</html>
