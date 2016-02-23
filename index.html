@@ -1,15 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myapp">
 <head>
 	<title></title>
 	<script type="text/javascript" src="angular.min.js"></script>
 </head>
-<body ng-app="">
+<body ng-controller="MainCtrl as mctrl">
 
-<h1>Hello World</h1>
+<div ng-controller="DivCtrl as dctrl">
+	
+	<h1>Hello World</h1>
+	<ul>
+		<li ng-repeat="user in dctrl.users">
+			<span>{{user.id}}</span>&nbsp;&nbsp;
+			<span>{{user.name}}</span>&nbsp;&nbsp;
+		</li>
+	</ul>
+	<button ng-click="mctrl.click()">Click me!</button>
 
-<h2>{{tuhes}}</h2>
-<input type="text" ng-model="tuhes">
+</div>
+
+<script type="text/javascript">
+	var myapp = angular.module("myapp", []);
+	myapp.controller("MainCtrl", ["$window", function($window) {
+		console.log("I am MainCtrl");
+		var self = this;
+		self.users = [
+		{id:1, name:"Vasia Pupkin"}, 
+		{id:2, name: "Kolia Zhopkin"}
+		];
+		self.click = function() {
+			$window.alert("Hello World!");
+		}
+	}]);
+
+	myapp.controller("DivCtrl", [function() {
+		console.log("I am Div Ctrl");
+		var self = this;
+		self.users = [];
+	}]);
+</script>
 
 </body>
 </html>
