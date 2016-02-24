@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>serv ex 05 [Data sharing]</title>
+</head>
+<body>
+
+<div ng-controller="oneController">
+	<input type="text" name="b" ng-model="hello.hello.a">
+</div>
+
+<div ng-controller="secondController">
+	<input type="text" name="a" ng-model="hello.hello.a">
+</div>
+
+<script type="text/javascript" src="../angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module("myapp", []);
+	app.controller("oneController", ["$scope", "dataService", function($scope, dataService) {
+		$scope.hello = dataService;
+	}]);
+
+	app.controller("secondController", ["$scope", "dataService", function($scope, dataService) {
+		$scope.hello = dataService;
+	}]);
+
+	app.factory("dataService", function() {
+		return {
+			hello: {
+				a: "10",
+				b: "20"
+			}
+		}
+	});
+</script>
+</body>
+</html>
