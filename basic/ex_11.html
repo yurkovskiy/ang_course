@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>#10 [Digest, Scope]</title>
+</head>
+<body ng-controller="DateController">
+
+<div>
+	<h1>{{date}}</h1>
+</div>
+
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module("myapp", []);
+	app.controller("DateController", ["$scope", "$interval", function($scope, $interval) {
+		$scope.date = new Date();
+
+		$interval(function() {
+			$scope.date = new Date();
+		}, 1000);	
+
+	}]);
+</script>
+</body>
+</html>
