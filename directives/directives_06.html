@@ -6,9 +6,18 @@
 </head>
 <body>
 
-<my-dir></my-dir>
+<mydir></mydir>
 
-<div my-dir></div>
+<div mydir>Some TextNode</div>
+
+<!-- Transclude -->
+
+<mytdir>Some TEXTNODE</mytdir>
+
+<div ng-controller="AppController">
+	<mytdir>Some value {{value}}</mytdir>
+</div>
+
 
 <script type="text/javascript" src="../angular.min.js"></script>
 <script type="text/javascript" src="app_06.js"></script>
