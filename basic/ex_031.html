@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+	<title>#031</title>
+</head>
+<body>
+
+<div>
+	<div ng-controller="BookController">
+		<h3>Some of the popular books</h3>
+		My Wish List Count: {{wishListCount}}
+		<ul>
+			<li ng-repeat="book in books">
+				{{book}}. <a href="#" ng-click="addToWishList(book)">Add To Wish List</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript">
+	angular.module("myapp", [])
+		.controller("BookController", ["$scope", function($scope) {
+			$scope.books = ["HTML5", "CSS3", "RWD", "AngularJS"];
+			$scope.name = "scope for BookController";
+			$scope.addToWishList = function(book) {
+				$scope.wishListCount++;
+			};
+			$scope.wishListCount = 0;
+			$scope.$watch("wishListCount", function(newValue, oldValue) {
+				console.log("Called " +newValue+ "times");
+			});
+		}]);
+</script>
+</body>
+</html>
